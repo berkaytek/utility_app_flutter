@@ -4,7 +4,6 @@ import 'package:utility_app/src/screens/about/about.dart';
 import 'package:utility_app/src/screens/counter/counter_observer.dart';
 import 'package:utility_app/src/screens/counter/counter_page.dart';
 import 'package:utility_app/src/screens/home/home_screen.dart';
-import 'package:utility_app/src/widgets/app_drawer.dart';
 
 void main() {
   Bloc.observer = CounterObserver();
@@ -28,7 +27,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Utility App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
+        scaffoldBackgroundColor: Colors.grey[200],
         useMaterial3: true,
       ),
       routes: appRoutes,

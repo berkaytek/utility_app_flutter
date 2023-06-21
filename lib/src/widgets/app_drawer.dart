@@ -1,33 +1,55 @@
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
-  const AppDrawer({super.key});
+  const AppDrawer({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        child: ListView(padding: EdgeInsets.zero, children: [
-      DrawerHeader(
-          decoration: BoxDecoration(color: Theme.of(context).primaryColorLight),
-          child: const Text("Utility App")),
-      ListTile(
-          title: const Text("Home Page"),
-          leading: const Icon(Icons.home),
-          onTap: () {
-            Navigator.of(context).pushNamed("/home");
-          }),
-      ListTile(
-          title: const Text("Counter"),
-          leading: const Icon(Icons.numbers),
-          onTap: () {
-            Navigator.of(context).pushNamed("/counter");
-          }),
-      ListTile(
-          title: const Text("About"),
-          leading: const Icon(Icons.question_mark),
-          onTap: () {
-            Navigator.of(context).pushNamed("/about");
-          })
-    ]));
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            color: Theme.of(context).primaryColorLight,
+            child:  ListTile(
+              leading: const Icon(
+                Icons.bolt,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Utility App",
+                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24
+                ),
+              ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.home),
+            title: const Text("Home Page"),
+            onTap: () {
+              Navigator.of(context).pushNamed("/home");
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.numbers),
+            title: const Text("Counter"),
+            onTap: () {
+              Navigator.of(context).pushNamed("/counter");
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.question_mark),
+            title: const Text("About"),
+            onTap: () {
+              Navigator.of(context).pushNamed("/about");
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
