@@ -13,7 +13,7 @@ class CounterView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DefaultAppBar(title: title),
-      drawer: const AppDrawer(),
+      drawer: const DefaultDrawer(),
       body: Center(
         child: BlocBuilder<CounterCubit, int>(
           builder: (context, state) => Text("Counter is $state",

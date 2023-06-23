@@ -1,9 +1,9 @@
 import "package:bloc/bloc.dart";
 import "package:logger/logger.dart";
 
-/// [BlocObserver] for the counter application which observes all state changes.
-class CounterObserver extends BlocObserver {
-  CounterObserver();
+/// [GeneralObserver] for the counter application which observes all state changes and logs them.
+class GeneralObserver extends BlocObserver {
+  GeneralObserver();
 
   Logger logger = Logger();
 

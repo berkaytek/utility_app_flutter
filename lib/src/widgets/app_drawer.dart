@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AppDrawer extends StatelessWidget {
-  const AppDrawer({Key? key});
+class DefaultDrawer extends StatelessWidget {
+  const DefaultDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class AppDrawer extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(vertical: 20.0),
             color: Theme.of(context).primaryColorLight,
-            child:  ListTile(
+            child: ListTile(
               leading: const Icon(
                 Icons.bolt,
                 color: Colors.white,
@@ -20,10 +20,9 @@ class AppDrawer extends StatelessWidget {
               title: Text(
                 "Utility App",
                 style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24
-                ),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24),
               ),
             ),
           ),
@@ -39,6 +38,13 @@ class AppDrawer extends StatelessWidget {
             title: const Text("Counter"),
             onTap: () {
               Navigator.of(context).pushNamed("/counter");
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.timer),
+            title: const Text("Timer"),
+            onTap: () {
+              Navigator.of(context).pushNamed("/timer");
             },
           ),
           ListTile(

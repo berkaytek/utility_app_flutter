@@ -1,12 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:utility_app/src/screens/about/about.dart';
-import 'package:utility_app/src/screens/counter/counter_observer.dart';
+import 'package:utility_app/src/screens/observers/general_observer.dart';
 import 'package:utility_app/src/screens/counter/counter_page.dart';
 import 'package:utility_app/src/screens/home/home_screen.dart';
+import 'package:utility_app/src/screens/timer/timer_page.dart';
 
 void main() {
-  Bloc.observer = CounterObserver();
+  Bloc.observer = GeneralObserver();
   runApp(const MyApp());
 }
 
@@ -15,6 +16,7 @@ final Map<String, WidgetBuilder> appRoutes = {
   '/counter': (context) => const CounterPage(
         title: "Counter Page",
       ),
+  '/timer': (context) => const TimerPage(title: "Timer page"),
   '/about': (context) => const About(title: "About")
 };
 
