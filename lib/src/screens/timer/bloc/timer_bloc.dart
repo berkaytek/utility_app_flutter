@@ -10,18 +10,20 @@ part 'timer_state.dart';
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
   final CustomTicker _ticker;
-  static const int _duration = 60;
+  static const int _defaultDuration = 60;
 
   StreamSubscription<int>? _tickerSubscription;
 
   TimerBloc({required CustomTicker ticker})
       : _ticker = ticker,
-        super(const TimerInitial(_duration)) {
+        super(const TimerInitial(_defaultDuration)) {
     on<TimerStarted>((event, emit) => _onStarted(event, emit));
     on<_TimerTicked>((event, emit) => _onTicked(event, emit));
     on<TimerPaused>((event, emit) => _onPaused(event, emit));
     on<TimerResumed>((event, emit) => _onResumed(event, emit));
     on<TimerReset>((event, emit) => _onReset(event, emit));
+    on<TimerSet>((event, emit) => _onSet(event, emit));
+
   }
 
   @override
@@ -60,6 +62,11 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
 
   void _onReset(TimerReset event, Emitter<TimerState> emit) {
     _tickerSubscription?.cancel();
-    emit(const TimerInitial(_duration));
+    emit(const TimerRunComplete());
+    emit(TimerInitial(event.duration));
+  }
+
+  void _onSet(TimerSet event, Emitter<TimerState> emit) {
+    emit(TimerInitial(event.duration));
   }
 }

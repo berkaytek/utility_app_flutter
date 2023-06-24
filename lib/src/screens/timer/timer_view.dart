@@ -24,7 +24,11 @@ class TimerView extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [AnimatedHourglassLogo(), TimerText(), TimerActions()],
+                children: [
+                  AnimatedHourglassLogo(),
+                  TimerText(),
+                  TimerActions()
+                ],
               )
             ],
           ),

@@ -45,14 +45,40 @@ class TimerActions extends StatelessWidget {
                       FloatingActionButton(
                         heroTag: "Start Reset",
                         onPressed: () =>
-                            context.read<TimerBloc>().add(const TimerReset()),
+                            context.read<TimerBloc>().add(const TimerReset(duration: 90)),
                         child: const Icon(Icons.replay_circle_filled),
                       )
                     ],
-                }
+                },
+                FloatingActionButton(
+                  heroTag: "Configure Timer",
+                  onPressed: () => buildShowDialog(context),
+                  child: const Icon(Icons.settings),
+                )
               ],
             ),
           );
         });
+  }
+
+  Future<dynamic> buildShowDialog(BuildContext context) {
+    var commonContext = context;
+    return showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: const Text("Configuration"),
+              content: const Text("Configure Timer here"),
+              actions: [
+                TextButton(
+                    onPressed: () => Navigator.pop(context, "Cancel"),
+                    child: const Text("Cancel")),
+                TextButton(
+                    onPressed: () => {
+                          BlocProvider.of<TimerBloc>(commonContext).add(const TimerReset(duration: 90)),
+                          Navigator.pop(context, "Ok"),
+                        },
+                    child: const Text("Ok"))
+              ],
+            ));
   }
 }
