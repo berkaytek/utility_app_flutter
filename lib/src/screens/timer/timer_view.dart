@@ -42,10 +42,11 @@ class TimerText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final duration = context.select((TimerBloc bloc) => bloc.state.duration);
+    final String hours = (duration / 3600).floor().toString().padLeft(2,"0");
     final String minutes =
         ((duration / 60) % 60).floor().toString().padLeft(2, '0');
     final String seconds = (duration % 60).floor().toString().padLeft(2, '0');
-    return Text("$minutes : $seconds",
+    return Text("$hours : $minutes : $seconds",
         style: Theme.of(context).textTheme.displaySmall);
   }
 }
